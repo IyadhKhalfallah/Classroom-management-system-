@@ -31,7 +31,7 @@ export function socialConfigs() {
 		},  
 		{  
 		  id: GoogleLoginProvider.PROVIDER_ID,  
-		  provider: new GoogleLoginProvider('app-114310346604-efqgihp5jootfhhcigsg01gki31pkcga.apps.googleusercontent.com')  
+		  provider: new GoogleLoginProvider('114310346604-efqgihp5jootfhhcigsg01gki31pkcga.apps.googleusercontent.com')  
 		}  
 	  ]  
 	);  
