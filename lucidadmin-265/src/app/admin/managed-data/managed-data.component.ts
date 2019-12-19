@@ -31,8 +31,8 @@ export class ManagedDataComponent implements OnInit {
         },
         grid: {
             borderWidth: 0,
-            y: 80,
-            y2: 60,
+            //y: 80,
+            //y2: 60,
         },
         xAxis : [
             {
