@@ -219,10 +219,10 @@ export class IndexComponent implements OnInit, OnDestroy {
             tooltip: {
                 trigger: 'item',
             },
-            grid: {
+           grid: {
                 borderWidth: 0,
-                y: 80,
-                y2: 60
+                //y: 80,
+                //y2: 60
             },
             xAxis: [
                 {

@@ -13,6 +13,8 @@ export class FileDocumentsComponent implements OnInit {
   public visitsOptions: EChartOption = {};
   public sidebarVisible: boolean = true;
 
+  public files = [{'name':'test', 'size':'15', 'date':'15/11/2020'}];
+
   constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
     this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
     this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");

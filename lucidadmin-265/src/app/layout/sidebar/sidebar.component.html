@@ -4,8 +4,7 @@
             <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown" ngbDropdown>
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Iyadh
-                        Khalfallah</strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alaa Triki</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
                     <li><a [routerLink]="['/admin/pages/page-profile2']"><i class="icon-user"></i>My Profile</a></li>
                     <li><a [routerLink]="['/admin/app/app-inbox']"><i class="icon-envelope-open"></i>Messages</a></li>
@@ -15,45 +14,82 @@
                 </ul>
             </div>
             <hr>
-            <ul class="row list-unstyled">
-                <li class="col-4">
-                    <small>Sales</small>
-                    <h6>456</h6>
-                </li>
-                <li class="col-4">
-                    <small>Order</small>
-                    <h6>1350</h6>
-                </li>
-                <li class="col-4">
-                    <small>Revenue</small>
-                    <h6>$2.13B</h6>
-                </li>
-            </ul>
+<!--            <ul class="row list-unstyled">-->
+<!--                <li class="col-4">-->
+<!--                    <small>Sales</small>-->
+<!--                    <h6>456</h6>-->
+<!--                </li>-->
+<!--                <li class="col-4">-->
+<!--                    <small>Order</small>-->
+<!--                    <h6>1350</h6>-->
+<!--                </li>-->
+<!--                <li class="col-4">-->
+<!--                    <small>Revenue</small>-->
+<!--                    <h6>$2.13B</h6>-->
+<!--                </li>-->
+<!--            </ul>-->
         </div>
         <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')"><i
-                        class="icon-book-open"></i></a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')"><i
-                        class="icon-settings"></i></a></li>
-            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')"><i
-                        class="icon-question"></i></a></li>
-        </ul>
+<!--        <ul class="nav nav-tabs">-->
+<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">Menu</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')"><i-->
+<!--                        class="icon-book-open"></i></a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')"><i-->
+<!--                        class="icon-settings"></i></a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')"><i-->
+<!--                        class="icon-question"></i></a></li>-->
+<!--        </ul>-->
 
         <!-- Tab panes -->
         <div class="tab-content p-l-0 p-r-0">
             <div class="tab-pane" id="menu" [ngClass]="{'active':navTab == 'menu' || !navTab}">
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
-                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'dashboard'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('dashboard')"><i class="icon-home"></i>
-                                <span>Dashboard</span></a>
-                            <ul *ngIf="currentActiveMenu == 'dashboard'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Analytical</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">IoT</a></li>
+                        <!-- TODO: Adjutst currentActiveMenu -->
+                        <!-- TODO: Adjutst routingLinks -->
+<!--                        Home Menu-->
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'home'}">
+                            <a class="has-arrow" [routerLink]="['/admin/dashboard/index']"><i class="icon-home"></i>
+                                <span>Home</span></a>
+                        </li>
+<!--                        Documents Menu-->
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'documents'}">
+                            <a class="has-arrow" (click)="activeInactiveMenu('documents')"><i class="icon-docs"></i>
+                                <span>My Documents</span></a>
+                            <ul *ngIf="currentActiveMenu == 'documents'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">All documents</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-post']">Add a document</a></li>
                             </ul>
                         </li>
+<!--                        Calendar Menu-->
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'calendar'}">
+                            <a class="has-arrow" (click)="activeInactiveMenu('calendar')"><i class="icon-calendar"></i>
+                                <span>My Calendar</span></a>
+                            <ul *ngIf="currentActiveMenu == 'calendar'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Calendar</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Shared Calendar</a></li>
+                            </ul>
+                        </li>
+<!--                        Grades Menu-->
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'grades'}">
+                            <a class="has-arrow" (click)="activeInactiveMenu('grades')"><i class="icon-trophy"></i>
+                                <span>My Grades</span></a>
+                            <ul *ngIf="currentActiveMenu == 'file-manager'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Add Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">My Ranking</a></li>
+                            </ul>
+                        </li>
+<!--                        Projects Menu-->
+                        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'projects'}">
+                            <a class="has-arrow" (click)="activeInactiveMenu('projects')"><i class="icon-rocket"></i>
+                                <span>My Projects</span></a>
+                            <ul *ngIf="currentActiveMenu == 'projects'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Projects</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">All projects</a></li>
+                            </ul>
+                        </li>
+<!--                        TODO: Remove unused menu items-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'app'}">
                             <a class="has-arrow" (click)="activeInactiveMenu('app')"><i class="icon-grid"></i> <span>App</span></a>
                             <ul *ngIf="currentActiveMenu == 'app'">
@@ -118,7 +154,7 @@
                                         [routerLink]="['/admin/widgets/widgets-ecommerce']">eCommerce</a></li>
                             </ul>
                         </li>
-                        
+
                         <li [ngClass]="{'active':currentActiveMenu == 'authentication'}">
                             <a class="has-arrow" (click)="activeInactiveMenu('authentication')"><i class="icon-lock"></i>
                                 <span>Authentication</span></a>
