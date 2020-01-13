@@ -6,8 +6,23 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Course;
-class User extends Authenticatable
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Grade;
+use App\eventCalendar;
+
+class User extends Authenticatable implements JWTSubject
 {
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
     use Notifiable;
 
     /**
@@ -40,5 +55,13 @@ class User extends Authenticatable
     public function courses()
     {
     	return $this->hasMany(Course::class);
+    }
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
+    public function event()
+    {
+        return $this->hasMany(eventCalendar::class);
     }
 }

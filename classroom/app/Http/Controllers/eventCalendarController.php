@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\SubjectResource;
-use App\Subject;
+use App\Http\Resources\eventCalendarResource;
+use App\eventCalendar;
 
-class SubjectController extends Controller
+class eventCalendarController extends Controller
 {
         public function __construct()
     {
@@ -20,7 +20,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return SubjectResource::collection(Subject::all());
+        return eventCalendarResource::collection(eventCalendar::all());
     }
     /**
      * Store a newly created resource in storage.
@@ -31,16 +31,21 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'coefficient' => 'required',
-
+            'title' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'type' => 'required',
+            'date' => 'required',
         ]);
-        $subject = new Subject();
-        $subject->name = $request->name;
-        $subject->coefficient = $request->coefficient;
-        $subject->save();
+        $event = new eventCalendar();
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->user_id = $request->user_id;
+        $event->type = $request->type;
+        $event->date = $request->date;
+        $event->save();
 
-        return new SubjectResource($subject);
+        return new eventCalendarResource($event);
     }
     /**
      * Display the specified resource.
@@ -48,9 +53,9 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show(eventCalendar $event)
     {
-        return new SubjectResource($subject);
+        return new eventCalendarResource($event);
     }
 
     /**
@@ -60,13 +65,13 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, eventCalendar $event)
 
     {
 
         // check if currently authenticated user is the owner of the book
 
-        if ($request->user()->id !== $subject->user_id) {
+        if ($request->user()->id !== $event->user_id) {
 
             return response()->json(['error' => 'You can only edit your own books.'], 403);
 
@@ -74,11 +79,11 @@ class SubjectController extends Controller
 
 
 
-        $subject->update($request->only(['name','coefficient']));
+        $event->update($request->only(['title','description','type','date']));
 
 
 
-        return new SubjectResource($subject);
+        return new eventCalendarResource($event);
     }
 
     /**
@@ -87,12 +92,12 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request,Subject $subject)
+    public function destroy(Request $request,eventCalendar $event)
     {
-        if($request->user()->id != $subject->user_id){
+        if($request->user()->id != $event->user_id){
             return response()->json(['error' => 'You can only delete your own books.'], 403);
         }
-        $subject ->delete();
+        $event ->delete();
         return response()->json(null,204);
     }
 }

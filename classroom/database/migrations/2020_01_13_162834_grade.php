@@ -15,9 +15,9 @@ class Grade extends Migration
     {
         Schema::create('grade', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->double('ds');
+            $table->double('ds')->default(0);
             $table->double('tp')->nullable();
-            $table->double('exam');
+            $table->double('exam')->default(0);
             $table->double('average');
 
             $table->bigInteger('subject_id')->unsigned();

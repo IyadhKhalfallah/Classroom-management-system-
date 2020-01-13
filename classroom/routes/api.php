@@ -50,13 +50,30 @@ Route::delete('users/{id}', function($id) {
 
     return 204;
 });
- 
 
+Route::post('login', [ 'as' => 'login', 'uses' => 'AuthController@login']);
+Route::post('register', 'AuthController@register');
+
+Route::group([
+    'prefix' => 'restricted',
+    'middleware' => 'auth:api',
+], function () {
+
+    // Authentication Routes...
+    Route::get('logout', 'Auth\LoginController@logout');
+
+    Route::get('/test', function () {
+        return 'authenticated';
+    });
+});
 
 //COURSES API ROUTES
 
 Route::apiResource('courses', 'coursesController');
 
+
 Route::apiResource('subject', 'SubjectController');
 
 Route::apiResource('grade', 'GradeController');
+
+Route::apiResource('event', 'eventCalendarController');

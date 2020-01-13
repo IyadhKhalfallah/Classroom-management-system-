@@ -7,11 +7,10 @@ use App\Http\Resources\GradeResource;
 use App\Grade;
 
 class GradeController extends Controller
-{
-    //    public function __construct()
-//    {
-//        $this->middleware('auth:api')->except(['index', 'show']);
-//    }
+{public function __construct()
+    {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
 
     /**
      * Display all books that have been added
@@ -20,7 +19,7 @@ class GradeController extends Controller
      */
     public function index()
     {
-        return GradeResource::collection(Grade::paginate(25));
+        return GradeResource::collection(Grade::all());
     }
     /**
      * Store a newly created resource in storage.
@@ -78,7 +77,7 @@ class GradeController extends Controller
 
         // check if currently authenticated user is the owner of the book
 
-        if ($request->user()->id !== $grade->user_id) {
+        if ($request->user()->id !== $grade->users_id) {
 
             return response()->json(['error' => 'You can only edit your own books.'], 403);
 
@@ -86,7 +85,7 @@ class GradeController extends Controller
 
 
 
-        $grade->update($request->only(['type','name','subject','link', 'description']));
+        $grade->update($request->only(['ds','tp','exam']));
 
 
 

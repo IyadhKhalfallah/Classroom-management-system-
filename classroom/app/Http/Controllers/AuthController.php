@@ -11,43 +11,42 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Auth;
 use Exception;
-
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
 
 
-    use AuthenticatesUsers, RegistersUsers {
-        AuthenticatesUsers::redirectPath insteadof RegistersUsers;
-        AuthenticatesUsers::guard insteadof RegistersUsers;
-    }
-
-
-    protected $redirectTo = '/';
-
-
-    public function __construct()
+    public function register(Request $request)
     {
-        $this->middleware('guest', ['except' => 'logout']);
-    }
-
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
         ]);
+
+        $token = auth()->login($user);
+
+        return $this->respondWithToken($token);
     }
 
-
-    protected function create(array $data)
+    public function login(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $credentials = $request->only(['email', 'password']);
+
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
 

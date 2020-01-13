@@ -10,7 +10,7 @@ class Course extends Model
     protected $fillable = [
         'type', 'name', 'link','description','user_id'
     ]; 
-    public function brand()
+    public function users()
     {
     	return $this->belongsTo(User::class);
     }
