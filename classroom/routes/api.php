@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 Use App\Course;
 Use App\User;
+use App\Http\Controllers\coursesController;
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\SubjectController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,28 +55,8 @@ Route::delete('users/{id}', function($id) {
 
 //COURSES API ROUTES
 
-Route::get('courses', function() {
+Route::apiResource('courses', 'coursesController');
 
-    return Course::all();
-});
- 
-Route::get('courses/{id}', function($id) {
-    return Course::find($id);
-});
+Route::apiResource('subject', 'SubjectController');
 
-Route::post('courses', function(Request $request) {
-    return Course::create($request->all);
-});
-
-Route::put('courses/{id}', function(Request $request, $id) {
-    $course = Course::findOrFail($id);
-    $course->update($request->all());
-
-    return $course;
-});
-
-Route::delete('courses/{id}', function($id) {
-    Course::find($id)->delete();
-
-    return 204;
-});
+Route::apiResource('grade', 'GradeController');
