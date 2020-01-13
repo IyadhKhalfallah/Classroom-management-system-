@@ -54,14 +54,8 @@
                         </li>
 <!--                        Documents Menu-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'documents'}">
-                            <a class="has-arrow" (click)="activeInactiveMenu('documents')"><i class="icon-docs"></i>
-                                <span>My Documents</span></a>
-                            <ul *ngIf="currentActiveMenu == 'documents'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Lectures</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">Exercises</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">Workshops</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">Exams</a></li>
-                            </ul>
+                            <a class="has-arrow" [routerLink]="['/admin/file-manager/file-documents']"><i class="icon-home"></i>
+                                <span>Documents</span></a>
                         </li>
 <!--                        Calendar Menu-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'calendar'}">
