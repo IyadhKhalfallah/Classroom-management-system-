@@ -34,15 +34,15 @@ export class PageLoginComponent implements OnInit {
     });  
   }  
   Savesresponse(socialusers: Socialusers) {  
-    this.SocialloginService.Savesresponse(socialusers).subscribe((res: any) => {  
-      debugger;  
-      console.log(res);  
-      this.socialusers=res;  
-      this.response = res.userDetail;  
-      localStorage.setItem('socialusers', JSON.stringify( this.socialusers));  
-      console.log(localStorage.setItem('socialusers', JSON.stringify(this.socialusers)));  
-      this.router.navigate([`/admin/dashboard/index`]);  
-    })  
+    // this.SocialloginService.Savesresponse(socialusers).subscribe((res: any) => {
+    //   debugger;
+    //   console.log(res);
+    //   this.socialusers=res;
+    //   this.response = res.userDetail;
+    //   localStorage.setItem('socialusers', JSON.stringify( this.socialusers));
+    //   console.log(localStorage.setItem('socialusers', JSON.stringify(this.socialusers)));
+    //   this.router.navigate([`/admin/dashboard/index`]);
+    // })
   }  
 
 	onSubmit(){

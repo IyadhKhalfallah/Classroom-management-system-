@@ -45,9 +45,9 @@ export class IndexComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         let that = this;
-        setTimeout(function () {
-            that.showToastr();
-        }, 1000);
+        // setTimeout(function () {
+        //     that.showToastr();
+        // }, 1000);
         this.chartIntervals();
     }
 
@@ -221,8 +221,8 @@ export class IndexComponent implements OnInit, OnDestroy {
             },
             grid: {
                 borderWidth: 0,
-                y: 80,
-                y2: 60
+                //y: 80,
+                //y2: 60
             },
             xAxis: [
                 {
