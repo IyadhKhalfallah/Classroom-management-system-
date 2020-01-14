@@ -15,6 +15,7 @@ import * as $ from 'jquery';
 import {DocumentsService} from './services/documents.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {GradesService} from "./services/grades.service";
 
 @NgModule({
     declarations: [
@@ -34,7 +35,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         HttpClientModule,
         FormsModule
     ],
-    providers: [DocumentsService],
+    providers: [DocumentsService, GradesService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

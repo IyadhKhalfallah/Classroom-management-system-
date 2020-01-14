@@ -75,9 +75,9 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('grades')"><i class="icon-trophy"></i>
                                 <span>My Grades</span></a>
                             <ul *ngIf="currentActiveMenu == 'grades'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Add Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">My Ranking</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-list']">Personal Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Scan Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">Add Grades Manually</a></li>
                             </ul>
                         </li>
 <!--                        Projects Menu-->
