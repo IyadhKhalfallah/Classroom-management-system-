@@ -33,7 +33,7 @@ export class AppCalendarComponent implements OnDestroy {
 				header: {
 					left: 'prev,next today',
 					center: 'title',
-					right: 'month,agendaWeek,agendaDay,listMonth'
+					right: 'month,listMonth'
 				},
 				events: data
 			};
