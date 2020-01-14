@@ -13,7 +13,8 @@ import { NgxGalleryModule } from 'ngx-gallery';
 
 import * as $ from 'jquery';
 import {DocumentsService} from './services/documents.service';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import {HttpClientModule} from "@angular/common/http";
         NgMultiSelectDropDownModule.forRoot(),
         LeafletModule.forRoot(),
         NgxGalleryModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
     ],
     providers: [DocumentsService],
     bootstrap: [AppComponent]

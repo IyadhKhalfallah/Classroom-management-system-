@@ -1,6 +1,9 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { SidebarService } from '../../services/sidebar.service';
+import {DocumentsService} from '../../services/documents.service';
+import {NgForm} from '@angular/forms';
+import {FileDocument} from "../../services/filedocument";
 
 @Component({
 	selector: 'app-blog-post',
@@ -8,6 +11,11 @@ import { SidebarService } from '../../services/sidebar.service';
 	styleUrls: ['./blog-post.component.css']
 })
 export class BlogPostComponent implements OnInit {
+
+	public dtitle: String;
+	public dsubject: String;
+	public dtype: String;
+	public dlink: String;
 
 	public visitorsOptions: EChartOption = {};
 	public visitsOptions: EChartOption = {};
@@ -31,6 +39,12 @@ export class BlogPostComponent implements OnInit {
 	}
 
 	ngOnInit() {
+	}
+
+	onSubmit(formulaire: NgForm){
+		let tmp = new FileDocument(0,this.dtitle,this.dtype,this.dsubject,this.dlink,"trikialaa");
+		console.log(tmp);
+		// this.documentsService.postCourse(tmp);
 	}
 
 	toggleFullWidth() {
