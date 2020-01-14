@@ -1,0 +1,5 @@
+**/logs
+.idea
+/node_modules
+**/node_modules
+/lucidadmin-265/node_modules
