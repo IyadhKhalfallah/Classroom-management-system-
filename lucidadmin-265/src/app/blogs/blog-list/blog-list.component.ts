@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { SidebarService } from '../../services/sidebar.service';
+import {Grade} from "../../services/grade";
+import {GradesService} from "../../services/grades.service";
 
 @Component({
 	selector: 'app-blog-list',
@@ -9,16 +11,22 @@ import { SidebarService } from '../../services/sidebar.service';
 })
 export class BlogListComponent implements OnInit {
 
+	public grades: Grade[] = [new Grade("trikialaa","Artificial Intelligence", 16.25, 19, 11.25)];
+
 	public visitorsOptions: EChartOption = {};
 	public visitsOptions: EChartOption = {};
 	public sidebarVisible: boolean = true;
 
-	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
+	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private gradesService: GradesService) {
 		this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
 		this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
 	}
 
 	ngOnInit() {
+		// this.gradesService.getGrades('trikialaa' , 'All').subscribe(
+		//     (response) => {(console.log(response)); }
+		// );
+		console.log('Done here!')
 	}
 
 	toggleFullWidth() {

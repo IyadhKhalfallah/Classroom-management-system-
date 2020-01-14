@@ -6,39 +6,13 @@
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alaa Triki</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
-                    <li><a [routerLink]="['/admin/pages/page-profile2']"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a [routerLink]="['/admin/app/app-inbox']"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                    <li><a [routerLink]="['/admin/pages/page-profile']"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
                     <li><a [routerLink]="['/authentication/page-login']"><i class="icon-power"></i>Logout</a></li>
                 </ul>
             </div>
             <hr>
-<!--            <ul class="row list-unstyled">-->
-<!--                <li class="col-4">-->
-<!--                    <small>Sales</small>-->
-<!--                    <h6>456</h6>-->
-<!--                </li>-->
-<!--                <li class="col-4">-->
-<!--                    <small>Order</small>-->
-<!--                    <h6>1350</h6>-->
-<!--                </li>-->
-<!--                <li class="col-4">-->
-<!--                    <small>Revenue</small>-->
-<!--                    <h6>$2.13B</h6>-->
-<!--                </li>-->
-<!--            </ul>-->
         </div>
-        <!-- Nav tabs -->
-<!--        <ul class="nav nav-tabs">-->
-<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'menu'}" (click)="changeNavTab('menu')">Menu</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'chat'}" (click)="changeNavTab('chat')"><i-->
-<!--                        class="icon-book-open"></i></a></li>-->
-<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'setting'}" (click)="changeNavTab('setting')"><i-->
-<!--                        class="icon-settings"></i></a></li>-->
-<!--            <li class="nav-item"><a class="nav-link" [ngClass]="{'active':navTab == 'question'}" (click)="changeNavTab('question')"><i-->
-<!--                        class="icon-question"></i></a></li>-->
-<!--        </ul>-->
 
         <!-- Tab panes -->
         <div class="tab-content p-l-0 p-r-0">
@@ -54,8 +28,12 @@
                         </li>
 <!--                        Documents Menu-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'documents'}">
-                            <a class="has-arrow" [routerLink]="['/admin/file-manager/file-documents']"><i class="icon-home"></i>
-                                <span>Documents</span></a>
+                            <a class="has-arrow" (click)="activeInactiveMenu('documents')"><i class="icon-docs"></i>
+                                <span>My Documents</span></a>
+                            <ul *ngIf="currentActiveMenu == 'documents'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">All documents</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-post']">Add a document</a></li>
+                            </ul>
                         </li>
 <!--                        Calendar Menu-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'calendar'}">
@@ -70,10 +48,10 @@
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'grades'}">
                             <a class="has-arrow" (click)="activeInactiveMenu('grades')"><i class="icon-trophy"></i>
                                 <span>My Grades</span></a>
-                            <ul *ngIf="currentActiveMenu == 'file-manager'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Add Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">My Ranking</a></li>
+                            <ul *ngIf="currentActiveMenu == 'grades'">
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-list']">Personal Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Scan Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/iot']">Add Grades Manually</a></li>
                             </ul>
                         </li>
 <!--                        Projects Menu-->

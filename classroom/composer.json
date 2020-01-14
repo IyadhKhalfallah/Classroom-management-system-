@@ -11,9 +11,13 @@
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
+<<<<<<< HEAD
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "tymon/jwt-auth": "1.0.*"
+=======
+        "laravel/tinker": "^1.0"
+>>>>>>> 29bd73bbbd8e58ba2e674c3b538e31020eaa0bfb
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

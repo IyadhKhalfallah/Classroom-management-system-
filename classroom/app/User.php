@@ -5,12 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+<<<<<<< HEAD
 use App\Course;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Grade;
 use App\eventCalendar;
 
 class User extends Authenticatable implements JWTSubject
+=======
+
+class User extends Authenticatable
+>>>>>>> 29bd73bbbd8e58ba2e674c3b538e31020eaa0bfb
 {
 
     public function getJWTIdentifier()
@@ -51,6 +56,7 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+<<<<<<< HEAD
 
     public function courses()
     {
@@ -64,4 +70,6 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(eventCalendar::class);
     }
+=======
+>>>>>>> 29bd73bbbd8e58ba2e674c3b538e31020eaa0bfb
 }

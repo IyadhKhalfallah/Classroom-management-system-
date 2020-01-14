@@ -12,6 +12,10 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import * as $ from 'jquery';
+import {DocumentsService} from './services/documents.service';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {GradesService} from "./services/grades.service";
 
 @NgModule({
     declarations: [
@@ -27,9 +31,11 @@ import * as $ from 'jquery';
         FullCalendarModule,
         NgMultiSelectDropDownModule.forRoot(),
         LeafletModule.forRoot(),
-        NgxGalleryModule
+        NgxGalleryModule,
+        HttpClientModule,
+        FormsModule
     ],
-    providers: [],
+    providers: [DocumentsService, GradesService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

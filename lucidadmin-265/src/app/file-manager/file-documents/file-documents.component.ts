@@ -1,26 +1,33 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { SidebarService } from '../../services/sidebar.service';
+import {FileDocument} from '../../services/filedocument';
+import {DocumentsService} from '../../services/documents.service';
 
 @Component({
   selector: 'app-file-documents',
   templateUrl: './file-documents.component.html',
-  styleUrls: ['./file-documents.component.css']
+  styleUrls: ['./file-documents.component.css'],
 })
 export class FileDocumentsComponent implements OnInit {
 
   public visitorsOptions: EChartOption = {};
   public visitsOptions: EChartOption = {};
-  public sidebarVisible: boolean = true;
+  public sidebarVisible = true;
 
-  public files = [{'name':'test', 'size':'15', 'date':'15/11/2020'}];
+  public fileDocuments: FileDocument[] = [new FileDocument(0, 'al', 'a', 'a', 'a', 'z')];
 
-  constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
-    this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
-    this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
+  constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private documentsService: DocumentsService) {
+    this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], '#49c5b6');
+    this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], '#f4516c');
   }
 
   ngOnInit() {
+    // this.documentsService.getCourses('' , 'All', 'All').subscribe(
+    //     (response) => {(console.log(response)); }
+    // );
+    console.log('Done here!')
+    this.fileDocuments = this.documentsService.tmpGet();
   }
 
   toggleFullWidth() {
@@ -31,10 +38,10 @@ export class FileDocumentsComponent implements OnInit {
 
   loadLineChartOptions(data, color) {
     let chartOption: EChartOption;
-    let xAxisData: Array<any> = new Array<any>();
+    const xAxisData: Array<any> = new Array<any>();
 
     data.forEach(element => {
-      xAxisData.push("");
+      xAxisData.push('');
     });
 
     return chartOption = {
