@@ -16,10 +16,13 @@ import {DocumentsService} from './services/documents.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GradesService} from "./services/grades.service";
+import { WebCamComponentComponent } from './web-cam-component/web-cam-component.component';
+import {WebcamModule} from 'ngx-webcam';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        WebCamComponentComponent
     ],
     imports: [
         BrowserModule,
@@ -33,7 +36,8 @@ import {GradesService} from "./services/grades.service";
         LeafletModule.forRoot(),
         NgxGalleryModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        WebcamModule
     ],
     providers: [DocumentsService, GradesService],
     bootstrap: [AppComponent]
