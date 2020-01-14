@@ -58,10 +58,6 @@ export class IndexComponent implements OnInit, OnDestroy {
     }
 
     showToastr() {
-        this.toastr.info('Hello, welcome to Lucid, a unique admin Template.', undefined, {
-            closeButton: true,
-            positionClass: 'toast-top-right'
-        });
     }
 
     chartIntervals(){
