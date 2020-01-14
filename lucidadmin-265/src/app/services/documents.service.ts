@@ -1,44 +1,49 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {FileDocument} from './document';
+import {FileDocument} from './filedocument';
 
-// @ts-ignore
 @Injectable({
   providedIn: 'root'
 })
-
-const API_ROUTE = '';
-
 export class DocumentsService {
-  documents: FileDocument[];
+  API_ROUTE = '';
+  fileDocuments: FileDocument[];
   constructor(private http: HttpClient) {
-    this.documents = [];
+    this.fileDocuments = [];
   }
 
   getCourses(name: String, type: String, subject: String): Observable<FileDocument[]> {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
     const params = new HttpParams().append('key', 'value');
-    return this.http.get<FileDocument[]>(API_ROUTE + '/api/courses', { headers: headers, params: params });
+    return this.http.get<FileDocument[]>(this.API_ROUTE + '/api/courses', { headers: headers, params: params });
   }
 
-  postCourse(document: FileDocument): Observable<FileDocument[]> {
+  postCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
     const jsondoc = {
-      'name': document.name,
-      'type': document.type,
-      'user-id': document.creatorUserId,
-      'link': document.link,
-      'subject': document.subject,
+      'name': fileDocument.name,
+      'type': fileDocument.type,
+      'user-id': fileDocument.creatorUserId,
+      'link': fileDocument.link,
+      'subject': fileDocument.subject,
     };
-    this.http.post(API_ROUTE + '/api/courses', jsondoc , { headers: headers });
+    this.http.post(this.API_ROUTE + '/api/courses', jsondoc , { headers: headers });
     return this.getCourses('', 'All' , 'All');
   }
 
-  deleteCourse(document: FileDocument): Observable<FileDocument[]> {
+  deleteCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    this.http.delete(API_ROUTE + '/api/courses/' + document.id, { headers: headers });
+    this.http.delete(this.API_ROUTE + '/api/courses/' + fileDocument.id, { headers: headers });
     return this.getCourses('', 'All' , 'All');
+  }
+
+  // TODO: Delete this
+  tmpGet(): FileDocument[] {
+    const a = [
+      new FileDocument(0 , 'test', 'td', 'ai' , 'google.fr', 'alaa'),
+    ];
+    return a;
   }
 
 

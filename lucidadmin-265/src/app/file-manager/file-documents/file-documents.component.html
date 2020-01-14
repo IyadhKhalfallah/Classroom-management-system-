@@ -36,22 +36,22 @@
             <button class="filterelement btn btn-primary mr-1" type="submit" >Filter</button>
         </form>
     </div>
-    <div *ngFor="let file of files" class="row clearfix">
+    <div *ngFor="let fileDocument of fileDocuments" class="row clearfix">
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="card">
                 <div class="file">
                     <a href="javascript:void(0);">
                         <div class="hover">
                             <button type="button" class="btn btn-icon btn-danger">
-                     <           <i class="fa fa-trash"></i>
-                       >     </button>
+                               <i class="fa fa-trash" (click)="documentsService.deleteCourse(fileDocument)"></i>
+                            </button>
                         </div>
-                        <div class="icon">
+                        <div class="icon" >
                             <i class="fa fa-file text-info"></i>
                         </div>
                         <div class="file-name">
-                            <p class="m-b-5 text-muted">{{file.name}}</p>
-                            <small>: {{file.size}} <span class="date text-muted">{{file.date}}</span></small>
+                            <p class="m-b-5 text-muted">{{fileDocument.name}}</p>
+                            <small>Author: {{fileDocument.creatorUserId}} <span class="date text-muted">{{fileDocument.subject}}</span></small>
                         </div>
                     </a>
                 </div>

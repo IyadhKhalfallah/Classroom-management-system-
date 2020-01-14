@@ -12,6 +12,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgxGalleryModule } from 'ngx-gallery';
 
 import * as $ from 'jquery';
+import {DocumentsService} from './services/documents.service';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -27,9 +29,10 @@ import * as $ from 'jquery';
         FullCalendarModule,
         NgMultiSelectDropDownModule.forRoot(),
         LeafletModule.forRoot(),
-        NgxGalleryModule
+        NgxGalleryModule,
+        HttpClientModule
     ],
-    providers: [],
+    providers: [DocumentsService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
