@@ -8,10 +8,10 @@ use App\eventCalendar;
 
 class eventCalendarController extends Controller
 {
-        public function __construct()
-    {
-        $this->middleware('auth:api')->except(['index', 'show']);
-    }
+//        public function __construct()
+//    {
+//        $this->middleware('auth:api')->except(['index', 'show']);
+//    }
 
     /**
      * Display all books that have been added

@@ -22,7 +22,7 @@ class EventCalendar extends Migration
                 ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->string('type');
-            $table->date('date');
+            $table->string('date');
             $table->timestamps();
 
         });
