@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Grade} from './grade';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {GradeSubmit} from "./gradesubmit";
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ export class GradesService {
     this.grades = [];
   }
   getGrades(): Observable<Grade[]> {
-    const headers = new HttpHeaders().append('Access-Control-Allow-Origin', '*').append('Access-Control-Allow-Credentials', 'true');
-
     return this.http.get<Grade[]>(this.API_ROUTE + '/api/grade');
+  }
+  postGrades(gradeSubmits: GradeSubmit[]) {
+    return this.http.post(this.API_ROUTE + '/api/grade', JSON.stringify(gradeSubmits));
   }
 }

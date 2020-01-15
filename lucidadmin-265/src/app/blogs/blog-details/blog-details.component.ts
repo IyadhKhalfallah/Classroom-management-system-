@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { SidebarService } from '../../services/sidebar.service';
 import {NgForm} from "@angular/forms";
+import {GradeSubmit} from "../../services/gradesubmit";
+import {GradesService} from "../../services/grades.service";
 
 @Component({
 	selector: 'app-blog-details',
@@ -10,7 +12,7 @@ import {NgForm} from "@angular/forms";
 })
 export class BlogDetailsComponent implements OnInit {
 
-	private STUDENTS_LIST =[
+	public STUDENTS_LIST =[
 		'ABROUGUI BAHA EDDINE',
 		'ALATRI AYMEN',
 		'AYADI MALEK',
@@ -82,20 +84,32 @@ export class BlogDetailsComponent implements OnInit {
 		'ZOUARI MOHAMED'
 	];
 
+	public gradeSubject: string = "Artificial Intelligence";
+	public gradeType: string = "Lectures";
+	public gradeValues: number[] = new Array(this.STUDENTS_LIST.length).fill(0);
+
+	public gradesSubmit: GradeSubmit[] = [];
 	public visitorsOptions: EChartOption = {};
 	public visitsOptions: EChartOption = {};
 	public sidebarVisible: boolean = true;
 
-	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
+	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private gradesService: GradesService) {
 		this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
 		this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
 	}
 
 	ngOnInit() {
+		for (let i = 0; i < this.STUDENTS_LIST.length; i += 1) {
+			this.gradesSubmit.push(new GradeSubmit(this.STUDENTS_LIST[i] , this.gradeSubject , this.gradeType, 0));
+		}
 	}
 
 	onSubmit(formulaire: NgForm){
-
+		this.gradesSubmit = [];
+		for (let i = 0; i < this.STUDENTS_LIST.length; i += 1) {
+			this.gradesSubmit.push(new GradeSubmit(this.STUDENTS_LIST[i] , this.gradeSubject , this.gradeType, this.gradeValues[i]));
+		}
+		this.gradesService.postGrades(this.gradesSubmit);
 	}
 
 	toggleFullWidth() {

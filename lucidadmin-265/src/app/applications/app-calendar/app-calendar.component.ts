@@ -23,6 +23,8 @@ export class AppCalendarComponent implements OnDestroy {
     public displayEvent: any;
     private ngUnsubscribe = new Subject();
 
+    public username = 'Alaa Triki';
+
 	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private eventService: EventService, private modalService: NgbModal) {
 		this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
 		this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");

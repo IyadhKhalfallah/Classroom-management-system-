@@ -5,11 +5,10 @@
 				<h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
 						<i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
 						<i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
-					</a> Calendar</h2>
+					</a> My Calendar</h2>
 				<ul class="breadcrumb">
 					<li class="breadcrumb-item"><a [routerLink]="['/admin']"><i class="icon-home"></i></a></li>
-					<li class="breadcrumb-item">App</li>
-					<li class="breadcrumb-item active">Calendar</li>
+					<li class="breadcrumb-item active">My Calendar</li>
 				</ul>
 			</div>
            
@@ -38,9 +37,9 @@
 					<div class="text-center">
 						<img src="assets/images/user.png" class="rounded-circle m-b-15" alt="">
 						<div>
-							<h4 class="m-b-0"><strong>Alizee</strong> Thomas</h4>
+							<h4 class="m-b-0">{{username}}</h4>
 						</div>
-						
+						<br>
 						<div class="row">
 							<div class="col-4">
 								<h6>17</h6>

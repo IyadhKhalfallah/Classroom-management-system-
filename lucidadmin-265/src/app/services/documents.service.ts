@@ -14,13 +14,10 @@ export class DocumentsService {
   }
 
   getCourses(name: String, type: String, subject: String): Observable<FileDocument[]> {
-    const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    //const params = new HttpParams().append('key', 'value');
     return this.http.get<FileDocument[]>(this.API_ROUTE + '/api/courses');
   }
 
   postCourse(fileDocument: FileDocument){
-    const headers = new HttpHeaders().append('Content-Type', 'application/json');
     var formData: any = new FormData();
     formData.append("name", fileDocument.name)
     formData.append("type", fileDocument.type,)
@@ -28,14 +25,11 @@ export class DocumentsService {
     formData.append("link", fileDocument.link)
     formData.append("subject", fileDocument.subject)
     formData.append("description", "test")
-
     return this.http.post(this.API_ROUTE + '/api/courses', formData );
-    
   }
 
   deleteCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
-    const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    this.http.delete(this.API_ROUTE + '/api/courses/' + fileDocument.id, { headers: headers });
+    this.http.delete(this.API_ROUTE + '/api/courses/' + fileDocument.id);
     return this.getCourses('', 'All' , 'All');
   }
 

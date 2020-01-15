@@ -23,12 +23,12 @@
 					<form (ngSubmit)="onSubmit(formulaire)" #formulaire="ngForm" >
 						<div class="form-group">
 						<label class="filterelement">Subject: </label>
-						<select class="filterelement" name="subject" id="subject">
+						<select class="filterelement" [(ngModel)]="gradeSubject" name="subject" id="subject">
 							<option value="Artificial Intelligence">Artificial Intelligence</option>
 							<option value="Web Frameworks">Web Frameworks</option>
 						</select>
 						<label class="filterelement">Type: </label>
-						<select class="filterelement" name="type" id="type">
+						<select class="filterelement" [(ngModel)]="gradeType" name="type" id="type">
 							<option value="Lectures">Lectures</option>
 							<option value="Exercices">Exercises</option>
 							<option value="Workshops">Workshop</option>
@@ -44,10 +44,10 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr *ngFor="let student of STUDENTS_LIST">
+								<tr *ngFor="let student of STUDENTS_LIST; let gradeSubmit of gradesSubmit; let i = index">
 									<td>{{student}}</td>
 									<td>
-										<input required type="number" class="form-control" placeholder="0" step="0.25" min="0" max="20"/>
+										<input [(ngModel)]="gradeValues[i]" name="gradeValue" required type="number" class="form-control" placeholder="0" step="0.25" min="0" max="20"/>
 									</td>
 								</tr>
 								</tbody>
