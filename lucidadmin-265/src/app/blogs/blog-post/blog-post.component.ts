@@ -4,6 +4,7 @@ import { SidebarService } from '../../services/sidebar.service';
 import {DocumentsService} from '../../services/documents.service';
 import {NgForm} from '@angular/forms';
 import {FileDocument} from "../../services/filedocument";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-blog-post',
@@ -31,7 +32,7 @@ export class BlogPostComponent implements OnInit {
 	};
 	public htmlContent: string = "";
 
-	constructor(private documentsService: DocumentsService,
+	constructor(private documentsService: DocumentsService, private router: Router,
 		private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
 		this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
 		this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
@@ -45,7 +46,10 @@ export class BlogPostComponent implements OnInit {
 	onSubmit(formulaire: NgForm){
 		let tmp = new FileDocument(0,this.dtitle,this.dtype,this.dsubject,this.dlink,1);
 		console.log(tmp);
-		 this.documentsService.postCourse(tmp).subscribe(document => console.log(document));
+		this.documentsService.postCourse(tmp).subscribe(document => {
+			console.log(document);
+			this.router.navigate(['/admin/file-manager/file-documents']);
+		});
 	}
 
 	toggleFullWidth() {

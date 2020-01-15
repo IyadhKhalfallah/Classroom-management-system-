@@ -40,7 +40,7 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('calendar')"><i class="icon-calendar"></i>
                                 <span>My Calendar</span></a>
                             <ul *ngIf="currentActiveMenu == 'calendar'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['admin/app/app-calendar']">Shared Calendar</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-calendar']">Shared Calendar</a></li>
                             </ul>
                         </li>
 <!--                        Grades Menu-->
