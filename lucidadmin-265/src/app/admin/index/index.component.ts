@@ -36,9 +36,9 @@ export class IndexComponent implements OnInit, OnDestroy {
     constructor(private activatedRoute: ActivatedRoute, private sidebarService: SidebarService, private cdr: ChangeDetectorRef, private toastr: ToastrService) {
         this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
         this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
-        this.earningOptions = this.loadLineAreaChartOptions([1, 4, 1, 3, 7, 1], "#f79647", "#fac091");
-        this.salesOptions = this.loadLineAreaChartOptions([1, 4, 2, 3, 6, 2], "#604a7b", "#a092b0");
-        this.visitsAreaOptions = this.loadLineAreaChartOptions([1, 4, 2, 3, 1, 5], "#4aacc5", "#92cddc");
+        this.earningOptions = this.loadLineAreaChartOptions([3, 10, 22, 37, 57, 71], "#f79647", "#fac091");
+        this.salesOptions = this.loadLineAreaChartOptions([1, 14, 47, 55, 61, 78], "#604a7b", "#a092b0");
+        this.visitsAreaOptions = this.loadLineAreaChartOptions([1, 2, 4, 7, 9, 9], "#4aacc5", "#92cddc");
         this.LikesOptions = this.loadLineAreaChartOptions([1, 3, 5, 1, 4, 2], "#4f81bc", "#95b3d7");
         //this.dataManagedBarChart = this.getDataManagedChartOptions();
     }
@@ -61,46 +61,46 @@ export class IndexComponent implements OnInit, OnDestroy {
     }
 
     chartIntervals(){
-        let that = this;
-        this.interval = setInterval(function(){
-            that.earningOptionsSeries.shift();
-            let rand = Math.floor(Math.random() * 11);
-            if (!rand){
-                rand = 1;
-            }
-            that.earningOptionsSeries.push(rand);
-            that.earningOptions = that.loadLineAreaChartOptions(that.earningOptionsSeries, "#f79647", "#fac091");
-            that.earnings = '$' + (that.earningOptionsSeries.reduce((a, b) => a + b, 0) * 1000).toLocaleString();
-
-
-            that.salesOptionsSeries.shift();
-            rand = Math.floor(Math.random() * 11);
-            if (!rand) {
-                rand = 1;
-            }
-            that.salesOptionsSeries.push(rand);
-            that.salesOptions = that.loadLineAreaChartOptions(that.salesOptionsSeries, "#604a7b", "#a092b0");
-            that.sales = '$' + (that.salesOptionsSeries.reduce((a, b) => a + b, 0) * 10000).toLocaleString();
-
-            that.visitsAreaOptionsSeries.shift();
-            rand = Math.floor(Math.random() * 11);
-            if (!rand) {
-                rand = 1;
-            }
-            that.visitsAreaOptionsSeries.push(rand);
-            that.visits += rand;
-            that.visitsAreaOptions = that.loadLineAreaChartOptions(that.visitsAreaOptionsSeries, "#4aacc5", "#92cddc");
-
-            that.LikesOptionsSeries.shift();
-            rand = Math.floor(Math.random() * 11);
-            if (!rand) {
-                rand = 1;
-            }
-            that.LikesOptionsSeries.push(rand);
-            that.likes += rand;
-            that.LikesOptions = that.loadLineAreaChartOptions(that.LikesOptionsSeries, "#4f81bc", "#95b3d7");
-            that.cdr.markForCheck();
-        },3000);
+        // let that = this;
+        // this.interval = setInterval(function(){
+        //     that.earningOptionsSeries.shift();
+        //     let rand = Math.floor(Math.random() * 11);
+        //     if (!rand){
+        //         rand = 1;
+        //     }
+        //     that.earningOptionsSeries.push(rand);
+        //     that.earningOptions = that.loadLineAreaChartOptions(that.earningOptionsSeries, "#f79647", "#fac091");
+        //     that.earnings = '$' + (that.earningOptionsSeries.reduce((a, b) => a + b, 0) * 1000).toLocaleString();
+        //
+        //
+        //     that.salesOptionsSeries.shift();
+        //     rand = Math.floor(Math.random() * 11);
+        //     if (!rand) {
+        //         rand = 1;
+        //     }
+        //     that.salesOptionsSeries.push(rand);
+        //     that.salesOptions = that.loadLineAreaChartOptions(that.salesOptionsSeries, "#604a7b", "#a092b0");
+        //     that.sales = '$' + (that.salesOptionsSeries.reduce((a, b) => a + b, 0) * 10000).toLocaleString();
+        //
+        //     that.visitsAreaOptionsSeries.shift();
+        //     rand = Math.floor(Math.random() * 11);
+        //     if (!rand) {
+        //         rand = 1;
+        //     }
+        //     that.visitsAreaOptionsSeries.push(rand);
+        //     that.visits += rand;
+        //     that.visitsAreaOptions = that.loadLineAreaChartOptions(that.visitsAreaOptionsSeries, "#4aacc5", "#92cddc");
+        //
+        //     that.LikesOptionsSeries.shift();
+        //     rand = Math.floor(Math.random() * 11);
+        //     if (!rand) {
+        //         rand = 1;
+        //     }
+        //     that.LikesOptionsSeries.push(rand);
+        //     that.likes += rand;
+        //     that.LikesOptions = that.loadLineAreaChartOptions(that.LikesOptionsSeries, "#4f81bc", "#95b3d7");
+        //     that.cdr.markForCheck();
+        // },3000);
 
     }
 

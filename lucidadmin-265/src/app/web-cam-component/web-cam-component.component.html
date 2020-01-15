@@ -1,29 +1,29 @@
 <router-outlet></router-outlet>
-<div style="text-align:center">
-    <h1>
-      Ngx-Webcam Demo
-    </h1>
-  
-    <div>
-      <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-              [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-              [videoOptions]="videoOptions"
-              [imageQuality]="1"
-              (cameraSwitched)="cameraWasSwitched($event)"
-              (initError)="handleInitError($event)"
-      ></webcam>
-      <br/>
-      <button class="actionBtn" (click)="triggerSnapshot();">Take A Snapshot</button>
-
+<div id="wrapper">
+    <div class="vertical-align-wrap">
+        <div class="vertical-align-middle auth-main">
+            <div class="auth-box">
+                <div class="top">
+                    <img src="assets/images/logo-white.png"  alt="Lucid">
+                </div>
+                <div class="card">
+                    <div class="body">
+                        <div>
+                            <webcam [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+                                    [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                                    [videoOptions]="videoOptions"
+                                    [imageQuality]="1"
+                                    (cameraSwitched)="cameraWasSwitched($event)"
+                                    (initError)="handleInitError($event)"
+                            ></webcam>
+                            <br/>
+                            <p align="center">
+                                <button  class="btn btn-primary mr-1" (click)="triggerSnapshot();">Take A Snapshot</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  
-  <div class="snapshot" *ngIf="webcamImage">
-    <h2>Nice one!</h2>
-    <img [src]="webcamImage.imageAsDataUrl"/>
-  </div>
-  
-  <h4 *ngIf="errors.length > 0">Messages:</h4>
-  <ul *ngFor="let error of errors">
-    <li>{{error | json}}</li>
-  </ul>
+</div>
