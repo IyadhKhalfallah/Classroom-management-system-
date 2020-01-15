@@ -5,6 +5,10 @@ import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
 import {resizebase64} from 'resize-base64';
 import { HttpClient } from '@angular/common/http';
 import { saveAs } from 'file-saver';
+import { WebCamService } from '../web-cam.service';
+import { AuthentificationService } from '../authentication/authentification.service';
+import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-web-cam-component',
@@ -13,7 +17,10 @@ import { saveAs } from 'file-saver';
 })
 export class WebCamComponentComponent implements OnInit {
  // toggle webcam on/off
- constructor(private http: HttpClient) { }
+ constructor(private router: Router,
+   private authenticationService: AuthentificationService,
+   private webcamService: WebCamService,
+   private http: HttpClient) { }
  public showWebcam = true;
  public allowCameraSwitch = true;
  public multipleWebcamsAvailable = false;
@@ -62,8 +69,27 @@ export class WebCamComponentComponent implements OnInit {
    console.info('received webcam image', webcamImage);
    this.webcamImage = webcamImage;
    var imageBase64 = webcamImage['imageAsDataUrl'];
-   var filename='profile.jpg'
+   let random = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+   var filename=String(random)+'.jpg'
    this.http.get(imageBase64, {responseType: 'blob'}).subscribe(data => saveAs(data, filename))
+   var formData: any = new FormData();
+   formData.append("title",'/Users/macbook/Downloads/'+filename )
+
+   this.http.post('http://0.0.0.0:5001/api/answer', formData ).subscribe(
+     (response)=>{
+       var email=response['email']
+       var password=response['password']
+       this.authenticationService.login(email.toString(), password.toString())
+       .pipe(first())
+       .subscribe(
+           data => {
+            this.router.navigate(['/admin/dashboard/index']);
+           },
+           error => {
+               console.log(error);
+           });
+     }
+   )
    
  }
 
