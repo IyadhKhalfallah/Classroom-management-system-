@@ -4,7 +4,7 @@
             <img src="assets/images/user.png" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown" ngbDropdown>
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>Alaa Triki</strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" ngbDropdownToggle><strong>{{username}}</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
                     <li><a [routerLink]="['/admin/pages/page-profile']"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
