@@ -7,7 +7,7 @@ import {FileDocument} from './filedocument';
   providedIn: 'root'
 })
 export class DocumentsService {
-  API_ROUTE = '';
+  API_ROUTE = 'http://127.0.0.1:8000';
   fileDocuments: FileDocument[];
   constructor(private http: HttpClient) {
     this.fileDocuments = [];
@@ -15,21 +15,22 @@ export class DocumentsService {
 
   getCourses(name: String, type: String, subject: String): Observable<FileDocument[]> {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    const params = new HttpParams().append('key', 'value');
-    return this.http.get<FileDocument[]>(this.API_ROUTE + '/api/courses', { headers: headers, params: params });
+    //const params = new HttpParams().append('key', 'value');
+    return this.http.get<FileDocument[]>(this.API_ROUTE + '/api/courses');
   }
 
-  postCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
+  postCourse(fileDocument: FileDocument){
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    const jsondoc = {
-      'name': fileDocument.name,
-      'type': fileDocument.type,
-      'user-id': fileDocument.creatorUserId,
-      'link': fileDocument.link,
-      'subject': fileDocument.subject,
-    };
-    this.http.post(this.API_ROUTE + '/api/courses', jsondoc , { headers: headers });
-    return this.getCourses('', 'All' , 'All');
+    var formData: any = new FormData();
+    formData.append("name", fileDocument.name)
+    formData.append("type", fileDocument.type,)
+    formData.append("user_id", fileDocument.creatorUserId)
+    formData.append("link", fileDocument.link)
+    formData.append("subject", fileDocument.subject)
+    formData.append("description", "test")
+
+    return this.http.post(this.API_ROUTE + '/api/courses', formData );
+    
   }
 
   deleteCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
@@ -38,13 +39,7 @@ export class DocumentsService {
     return this.getCourses('', 'All' , 'All');
   }
 
-  // TODO: Delete this
-  tmpGet(): FileDocument[] {
-    const a = [
-      new FileDocument(0 , 'test', 'td', 'ai' , 'google.fr', 'alaa'),
-    ];
-    return a;
-  }
+
 
 
 }

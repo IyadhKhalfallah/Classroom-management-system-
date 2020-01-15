@@ -7,10 +7,10 @@ use App\Http\Resources\GradeResource;
 use App\Grade;
 
 class GradeController extends Controller
-{public function __construct()
-    {
-        $this->middleware('auth:api')->except(['index', 'show']);
-    }
+{//public function __construct()
+   // {
+     //   $this->middleware('auth:api')->except(['index', 'show']);
+    //}
 
     /**
      * Display all books that have been added

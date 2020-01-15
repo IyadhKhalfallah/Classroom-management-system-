@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Resources\CoursesResource;
 class coursesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api')->except(['index', 'show']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth:api')->except(['index', 'show']);
+//    }
 
     /**
      * Display all books that have been added

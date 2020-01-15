@@ -56,7 +56,7 @@ Route::post('register', 'AuthController@register');
 
 Route::group([
     'prefix' => 'restricted',
-    'middleware' => 'auth:api',
+    'middleware' => ['auth:api','cors'],
 ], function () {
 
     // Authentication Routes...
@@ -69,11 +69,23 @@ Route::group([
 
 //COURSES API ROUTES
 
-Route::apiResource('courses', 'coursesController');
+//Route::apiResource('courses', 'coursesController');
+//
+//
+//Route::apiResource('subject', 'SubjectController');
+//
+//Route::apiResource('grade', 'GradeController');
+//
+//Route::apiResource('event', 'eventCalendarController');
+
+Route::group(['middleware' => 'cors'], function()
+{
+    Route::apiResource('courses', 'coursesController');
 
 
-Route::apiResource('subject', 'SubjectController');
+    Route::apiResource('subject', 'SubjectController');
 
-Route::apiResource('grade', 'GradeController');
+    Route::apiResource('grade', 'GradeController');
 
-Route::apiResource('event', 'eventCalendarController');
+    Route::apiResource('event', 'eventCalendarController');
+});

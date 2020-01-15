@@ -8,13 +8,13 @@ import {Observable} from 'rxjs';
 })
 export class GradesService {
   grades: Grade[];
-  API_ROUTE = '';
+  API_ROUTE = 'http://127.0.0.1:8000';
   constructor(private http: HttpClient) {
     this.grades = [];
   }
-  getGrades(username: string, subject: string): Observable<Grade[]> {
-    const headers = new HttpHeaders().append('Content-Type', 'application/json');
-    const params = new HttpParams().append('username', username).append('subject', subject);
-    return this.http.get<Grade[]>(this.API_ROUTE + '/api/grades', { headers: headers, params: params });
+  getGrades(): Observable<Grade[]> {
+    const headers = new HttpHeaders().append('Access-Control-Allow-Origin', '*').append('Access-Control-Allow-Credentials', 'true');
+
+    return this.http.get<Grade[]>(this.API_ROUTE + '/api/grade');
   }
 }

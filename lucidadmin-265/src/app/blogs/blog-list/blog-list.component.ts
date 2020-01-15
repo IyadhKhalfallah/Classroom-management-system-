@@ -23,9 +23,15 @@ export class BlogListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		// this.gradesService.getGrades('trikialaa' , 'All').subscribe(
-		//     (response) => {(console.log(response)); }
-		// );
+		 this.gradesService.getGrades().subscribe(
+			 (response) => {(console.log(response['data']));
+				for(var i=0;i<response['data'].length;i++){
+					var g=new Grade(response['data'][i]['users_id'],response['data'][i]['subject_id'],response['data'][i]['ds'],response['data'][i]['tp'],response['data'][i]['exam']);
+					this.grades.push(g)
+				}
+			},
+			 (error)=> {console.log(error);}
+		 );
 		console.log('Done here!')
 	}
 

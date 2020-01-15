@@ -96,6 +96,9 @@
       <path value="$PROJECT_DIR$/classroom/vendor/symfony/polyfill-util" />
       <path value="$PROJECT_DIR$/classroom/vendor/tymon/jwt-auth" />
       <path value="$PROJECT_DIR$/classroom/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/classroom/vendor/barryvdh/laravel-cors" />
+      <path value="$PROJECT_DIR$/classroom/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/classroom/vendor/fruitcake/laravel-cors" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

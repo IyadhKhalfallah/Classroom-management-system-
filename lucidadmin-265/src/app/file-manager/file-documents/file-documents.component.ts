@@ -23,11 +23,15 @@ export class FileDocumentsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.documentsService.getCourses('' , 'All', 'All').subscribe(
-    //     (response) => {(console.log(response)); }
-    // );
-    console.log('Done here!')
-    this.fileDocuments = this.documentsService.tmpGet();
+     this.documentsService.getCourses('' , 'All', 'All').subscribe(
+         (response) => {(console.log(response)); 
+        for(var i=0;i<response['data'].length;i++){
+        var d=new FileDocument(response['data'][i]['id'],response['data'][i]['name'],response['data'][i]['type'],response['data'][i]['subject'],response['data'][i]['link'],response['data'][i]['user_id'])
+        this.fileDocuments.push(d);
+      }
+        }
+     );
+
   }
 
   toggleFullWidth() {

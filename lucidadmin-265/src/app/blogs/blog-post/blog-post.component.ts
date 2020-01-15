@@ -31,7 +31,8 @@ export class BlogPostComponent implements OnInit {
 	};
 	public htmlContent: string = "";
 
-	constructor(private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
+	constructor(private documentsService: DocumentsService,
+		private sidebarService: SidebarService, private cdr: ChangeDetectorRef) {
 		this.visitorsOptions = this.loadLineChartOptions([3, 5, 1, 6, 5, 4, 8, 3], "#49c5b6");
 		this.visitsOptions = this.loadLineChartOptions([4, 6, 3, 2, 5, 6, 5, 4], "#f4516c");
 
@@ -42,9 +43,9 @@ export class BlogPostComponent implements OnInit {
 	}
 
 	onSubmit(formulaire: NgForm){
-		let tmp = new FileDocument(0,this.dtitle,this.dtype,this.dsubject,this.dlink,"trikialaa");
+		let tmp = new FileDocument(0,this.dtitle,this.dtype,this.dsubject,this.dlink,1);
 		console.log(tmp);
-		// this.documentsService.postCourse(tmp);
+		 this.documentsService.postCourse(tmp).subscribe(document => console.log(document));
 	}
 
 	toggleFullWidth() {
