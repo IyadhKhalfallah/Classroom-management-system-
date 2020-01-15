@@ -8,7 +8,7 @@ import { User } from './user';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthentificationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -34,6 +34,16 @@ export class AuthService {
       localStorage.removeItem('currentUser');
       this.currentUserSubject.next(null);
   }
+
+  register(username: string, password: string,firstname: string, lastname:string ) {
+    return this.http.post<any>(`/users/authenticate`, { username, password,firstname,lastname })
+        .pipe(map(user => {
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.currentUserSubject.next(user);
+            return user;
+        }));
+}
+
 
 
 }

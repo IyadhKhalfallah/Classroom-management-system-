@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GradesService} from "./services/grades.service";
 
+
 @NgModule({
     declarations: [
         AppComponent
@@ -33,7 +34,8 @@ import {GradesService} from "./services/grades.service";
         LeafletModule.forRoot(),
         NgxGalleryModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [DocumentsService, GradesService],
     bootstrap: [AppComponent]
