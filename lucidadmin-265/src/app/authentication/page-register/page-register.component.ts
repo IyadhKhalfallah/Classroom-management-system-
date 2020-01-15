@@ -14,7 +14,6 @@ export class PageRegisterComponent implements OnInit {
     public email: String;
     public password: String;
     public first: String;
-    public last: String;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -34,8 +33,7 @@ export class PageRegisterComponent implements OnInit {
         console.log(this.email);
         console.log(this.password);
         console.log(this.first);
-        console.log(this.last);
-        this.authenticationService.register(this.email.toString(), this.password.toString(), this.first.toString(), this.last.toString())
+        this.authenticationService.register(this.email.toString(), this.password.toString(), this.first.toString())
             .pipe(first())
             .subscribe(
                 data => {

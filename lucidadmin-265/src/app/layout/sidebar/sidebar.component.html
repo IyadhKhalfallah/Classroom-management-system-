@@ -8,7 +8,7 @@
                 <ul class="dropdown-menu dropdown-menu-right account" ngbDropdownMenu>
                     <li><a [routerLink]="['/admin/pages/page-profile']"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
-                    <li><a [routerLink]="['/authentication/page-login']"><i class="icon-power"></i>Logout</a></li>
+                    <li><a (click)="logout()"><i class="icon-power"></i>Logout</a></li>
                 </ul>
             </div>
             <hr>

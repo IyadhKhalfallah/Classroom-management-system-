@@ -9,6 +9,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class AuthentificationService {
+  API_ROUTE="http://127.0.0.1:8000";
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -22,7 +23,10 @@ export class AuthentificationService {
   }
 
   login(username: string, password: string) {
-      return this.http.post<any>(`/users/authenticate`, { username, password })
+    var formData: any = new FormData();
+    formData.append("email", username)
+    formData.append("password", password)
+      return this.http.post<any>(this.API_ROUTE+`/api/login`, formData)
           .pipe(map(user => {
               localStorage.setItem('currentUser', JSON.stringify(user));
               this.currentUserSubject.next(user);
@@ -35,8 +39,12 @@ export class AuthentificationService {
       this.currentUserSubject.next(null);
   }
 
-  register(username: string, password: string,firstname: string, lastname:string ) {
-    return this.http.post<any>(`/users/authenticate`, { username, password,firstname,lastname })
+  register(username: string, password: string,firstname: string ) {
+    var formData: any = new FormData();
+    formData.append("name", firstname)
+    formData.append("email", username)
+    formData.append("password", password)
+    return this.http.post<any>(this.API_ROUTE+`/api/register`, formData)
         .pipe(map(user => {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);

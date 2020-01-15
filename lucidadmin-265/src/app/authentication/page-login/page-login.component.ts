@@ -99,6 +99,6 @@ export class PageLoginComponent implements OnInit {
                 this.error = error;
                 this.loading = false;
             });
-    this.router.navigate(['/admin/dashboard/index']);
+    //this.router.navigate(['/admin/dashboard/index']);
   }
 }
