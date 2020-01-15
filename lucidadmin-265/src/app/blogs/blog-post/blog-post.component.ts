@@ -48,7 +48,7 @@ export class BlogPostComponent implements OnInit {
 		console.log(tmp);
 		this.documentsService.postCourse(tmp).subscribe(document => {
 			console.log(document);
-			this.router.navigate(['/admin/file-manager/file-documents']);
+			this.router.navigate(['/admin/all-documents']);
 		});
 	}
 

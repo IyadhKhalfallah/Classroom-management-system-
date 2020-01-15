@@ -23,7 +23,7 @@
                         <!-- TODO: Adjutst routingLinks -->
 <!--                        Home Menu-->
                         <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [ngClass]="{'active':currentActiveMenu == 'home'}">
-                            <a class="has-arrow" [routerLink]="['/admin/dashboard/index']"><i class="icon-home"></i>
+                            <a class="has-arrow" [routerLink]="['/admin/index']"><i class="icon-home"></i>
                                 <span>Home</span></a>
                         </li>
 <!--                        Documents Menu-->
@@ -31,8 +31,8 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('documents')"><i class="icon-docs"></i>
                                 <span>My Documents</span></a>
                             <ul *ngIf="currentActiveMenu == 'documents'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/file-manager/file-documents']">All documents</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-post']">Add a document</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/all-documents']">All documents</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/add-document']">Add a document</a></li>
                             </ul>
                         </li>
 <!--                        Calendar Menu-->
@@ -40,7 +40,7 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('calendar')"><i class="icon-calendar"></i>
                                 <span>My Calendar</span></a>
                             <ul *ngIf="currentActiveMenu == 'calendar'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/app/app-calendar']">Shared Calendar</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/calendar']">Personal Calendar</a></li>
                             </ul>
                         </li>
 <!--                        Grades Menu-->
@@ -48,9 +48,9 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('grades')"><i class="icon-trophy"></i>
                                 <span>My Grades</span></a>
                             <ul *ngIf="currentActiveMenu == 'grades'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-list']">Personal Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Scan Grades</a></li>
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/blogs/blog-details']">Add Grades Manually</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/personal-grades']">Personal Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/index']">Scan Grades</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/add-grades']">Add Grades Manually</a></li>
                             </ul>
                         </li>
 <!--                        Projects Menu-->
@@ -58,7 +58,7 @@
                             <a class="has-arrow" (click)="activeInactiveMenu('projects')"><i class="icon-rocket"></i>
                                 <span>My Projects</span></a>
                             <ul *ngIf="currentActiveMenu == 'projects'">
-                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/dashboard/index']">Personal Projects</a></li>
+                                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/admin/index']">Personal Projects</a></li>
                             </ul>
                         </li>
                     </ul>

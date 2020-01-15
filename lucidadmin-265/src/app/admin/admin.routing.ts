@@ -53,13 +53,20 @@ const routes: Routes = [
         path: '',
         component: AdminComponent,
         children: [
-            { path: '', redirectTo:'dashboard'},
+            { path: '', redirectTo:'index'},
+            { path: 'index', component: IndexComponent, data: { title: ':: Klassy :: Home ::' } },
+            { path: 'calendar', component: AppCalendarComponent, data: { title: ':: Klassy :: My Calendar ::' } },
+            { path: 'all-documents', component: FileDocumentsComponent, data: { title: ':: Klassy :: My Documents :: All Documents ::' } },
+            { path: 'add-document', component: BlogPostComponent, data: { title: ':: Klassy :: My Documents :: Add Document ::' } },
+            { path: 'personal-grades', component: BlogListComponent, data: { title: ':: Klassy :: My Grades :: Personal Grades ::' } },
+            { path: 'add-grades', component: BlogDetailsComponent, data: { title: ':: Klassy :: My Grades :: Add Grades ::' } },
+
             {
                 path: 'dashboard',
                 children: [
                     { path: '', redirectTo: 'index', pathMatch: 'full' },
-                    { path: 'index', component: IndexComponent, data: { title: ':: Lucid Angular :: Dashboard :: Analytical ::' } },
-                    { path: 'iot', component: IotDashboardComponent, data: { title: ':: Lucid Angular :: Dashboard :: IoT ::' } },
+                    { path: 'index', component: IndexComponent, data: { title: ':: Klassy :: Dashboard :: Analytical ::' } },
+                    { path: 'iot', component: IotDashboardComponent, data: { title: ':: Klassy :: Dashboard :: IoT ::' } },
                 ]
             },
             { 
@@ -68,13 +75,13 @@ const routes: Routes = [
                     {
                         path: 'app-inbox',
                         children: [
-                            { path: '', pathMatch: 'full', component: InboxComponent, data: { title: ':: Lucid Angular :: App :: Inbox ::' }  },
-                            { path: 'compose', component: ComposeComponent, data: { title: ':: Lucid Angular :: App :: Compose ::' } }
+                            { path: '', pathMatch: 'full', component: InboxComponent, data: { title: ':: Klassy :: App :: Inbox ::' }  },
+                            { path: 'compose', component: ComposeComponent, data: { title: ':: Klassy :: App :: Compose ::' } }
                         ]
                     },
-                    { path: 'app-chat', component: AppChatComponent, data: { title: ':: Lucid Angular :: App :: Chat ::' } },
-                    { path: 'app-contact-grid', component: ContactGridComponent, data: { title: ':: Lucid Angular :: App :: Contacts ::' } },
-                    { path: 'app-calendar', component: AppCalendarComponent, data: { title: ':: Lucid Angular :: App :: Calendar ::' } },
+                    { path: 'app-chat', component: AppChatComponent, data: { title: ':: Klassy :: App :: Chat ::' } },
+                    { path: 'app-contact-grid', component: ContactGridComponent, data: { title: ':: Klassy :: App :: Contacts ::' } },
+                    { path: 'app-calendar', component: AppCalendarComponent, data: { title: ':: Klassy :: App :: Calendar ::' } },
                     
                 ]
             },
@@ -82,54 +89,54 @@ const routes: Routes = [
                 path: 'ui-elements',
                 children: [
                     { path: '', redirectTo: 'typography', pathMatch: 'full' },
-                    { path: 'typography', component: TypographyComponent, data: { title: ':: Lucid Angular :: UI Elements :: Typography ::' } },
-                    { path: 'ui-tabs', component: UiTabsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Tabs ::' } },
-                    { path: 'ui-buttons', component: UiButtonsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Buttons ::' } },
-                    { path: 'ui-bootstrap', component: UiBootstrapComponent, data: { title: ':: Lucid Angular :: UI Elements :: Bootstrap ::' } },
-                    { path: 'ui-icons', component: UiIconsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Icons ::' } },
-                    { path: 'ui-colors', component: UiColorsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Colors ::' } },
-                    { path: 'ui-list-group', component: UiListGroupComponent, data: { title: ':: Lucid Angular :: UI Elements :: Lists ::' } },
-                    { path: 'ui-media-object', component: UiMediaObjectComponent, data: { title: ':: Lucid Angular :: UI Elements :: Media ::' } },
-                    { path: 'ui-modal', component: UiModalsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Modal ::' } },
-                    { path: 'ui-progressbars', component: UiProgressbarsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Prograssbars ::' } },
-                    { path: 'ui-notifications', component: UiNotificationsComponent, data: { title: ':: Lucid Angular :: UI Elements :: Notifications ::' } },
+                    { path: 'typography', component: TypographyComponent, data: { title: ':: Klassy :: UI Elements :: Typography ::' } },
+                    { path: 'ui-tabs', component: UiTabsComponent, data: { title: ':: Klassy :: UI Elements :: Tabs ::' } },
+                    { path: 'ui-buttons', component: UiButtonsComponent, data: { title: ':: Klassy :: UI Elements :: Buttons ::' } },
+                    { path: 'ui-bootstrap', component: UiBootstrapComponent, data: { title: ':: Klassy :: UI Elements :: Bootstrap ::' } },
+                    { path: 'ui-icons', component: UiIconsComponent, data: { title: ':: Klassy :: UI Elements :: Icons ::' } },
+                    { path: 'ui-colors', component: UiColorsComponent, data: { title: ':: Klassy :: UI Elements :: Colors ::' } },
+                    { path: 'ui-list-group', component: UiListGroupComponent, data: { title: ':: Klassy :: UI Elements :: Lists ::' } },
+                    { path: 'ui-media-object', component: UiMediaObjectComponent, data: { title: ':: Klassy :: UI Elements :: Media ::' } },
+                    { path: 'ui-modal', component: UiModalsComponent, data: { title: ':: Klassy :: UI Elements :: Modal ::' } },
+                    { path: 'ui-progressbars', component: UiProgressbarsComponent, data: { title: ':: Klassy :: UI Elements :: Prograssbars ::' } },
+                    { path: 'ui-notifications', component: UiNotificationsComponent, data: { title: ':: Klassy :: UI Elements :: Notifications ::' } },
                 ]
             },
             {
                 path: 'file-manager',
                 children: [
                     { path: '', redirectTo: 'file-documents', pathMatch: 'full' },
-                    { path: 'file-documents', component: FileDocumentsComponent, data: { title: ':: Lucid Angular :: File Manager :: Documents ::' } },
-                    { path: 'file-media', component: FileMediaComponent, data: { title: ':: Lucid Angular :: File Manager :: Media ::' } },
-                    { path: 'file-images', component: FileImagesComponent, data: { title: ':: Lucid Angular :: File Manager :: Images ::' } }
+                    { path: 'file-documents', component: FileDocumentsComponent, data: { title: ':: Klassy :: File Manager :: Documents ::' } },
+                    { path: 'file-media', component: FileMediaComponent, data: { title: ':: Klassy :: File Manager :: Media ::' } },
+                    { path: 'file-images', component: FileImagesComponent, data: { title: ':: Klassy :: File Manager :: Images ::' } }
                 ]
             },
             {
                 path: 'tables',
                 children: [
                     { path: '', redirectTo: 'table-normal', pathMatch: 'full' },
-                    { path: 'table-normal', component: TableNormalComponent, data: { title: ':: Lucid Angular :: Tables :: Normal Tables ::' }  },
+                    { path: 'table-normal', component: TableNormalComponent, data: { title: ':: Klassy :: Tables :: Normal Tables ::' }  },
                 ]
             },
             {
                 path: 'pages',
                 children: [
                     { path: '', redirectTo: 'page-blank', pathMatch: 'full' },
-                    { path: 'page-blank', component: PageBlankComponent, data: { title: ':: Lucid Angular :: Pages :: Blank ::' }  },
-                    { path: 'page-profile', component: PageProfileComponent, data: { title: ':: Lucid Angular :: Pages :: Profile ::' } },
-                    { path: 'page-profile2', component: PageProfileV2Component, data: { title: ':: Lucid Angular :: Pages :: Profile - V2 ::' } },
-                    { path: 'page-gallery', component: PageGalleryComponent, data: { title: ':: Lucid Angular :: Pages :: Gallery ::' } },
-                    { path: 'page-timeline', component: PageTimelineComponent, data: { title: ':: Lucid Angular :: Pages :: Timeline ::' } },
-                    { path: 'page-pricing', component: PagePricingComponent, data: { title: ':: Lucid Angular :: Pages :: Pricing ::' } },
-                    { path: 'page-invoices', component: PageInvoicesComponent, data: { title: ':: Lucid Angular :: Pages :: Invoices ::' } },
-                    { path: 'page-invoices2', component: PageInvoicesV2Component, data: { title: ':: Lucid Angular :: Pages :: Invoices - V2 ::' } },
-                    { path: 'page-search-results', component: PageSearchResultsComponent, data: { title: ':: Lucid Angular :: Pages :: Search Results ::' } },
-                    { path: 'page-helper-class', component: PageHelperClassComponent, data: { title: ':: Lucid Angular :: Pages :: Classes ::' } },
-                    { path: 'page-teams-board', component: PageTeamsBoardComponent, data: { title: ':: Lucid Angular :: Pages :: Team ::' } },
-                    { path: 'page-projects-list', component: PageProjectsListComponent, data: { title: ':: Lucid Angular :: Pages :: Projects ::' } },
-                    { path: 'page-maintenance', component: PageProjectsListComponent, data: { title: ':: Lucid Angular :: Pages :: Maintenance ::' } },
-                    { path: 'page-testimonials', component: PageTestimonialsComponent, data: { title: ':: Lucid Angular :: Pages :: Testimonials ::' } },
-                    { path: 'page-faq', component: PageFaqComponent, data: { title: ':: Lucid Angular :: Pages :: Faq ::' } },
+                    { path: 'page-blank', component: PageBlankComponent, data: { title: ':: Klassy :: Pages :: Blank ::' }  },
+                    { path: 'page-profile', component: PageProfileComponent, data: { title: ':: Klassy :: Pages :: Profile ::' } },
+                    { path: 'page-profile2', component: PageProfileV2Component, data: { title: ':: Klassy :: Pages :: Profile - V2 ::' } },
+                    { path: 'page-gallery', component: PageGalleryComponent, data: { title: ':: Klassy :: Pages :: Gallery ::' } },
+                    { path: 'page-timeline', component: PageTimelineComponent, data: { title: ':: Klassy :: Pages :: Timeline ::' } },
+                    { path: 'page-pricing', component: PagePricingComponent, data: { title: ':: Klassy :: Pages :: Pricing ::' } },
+                    { path: 'page-invoices', component: PageInvoicesComponent, data: { title: ':: Klassy :: Pages :: Invoices ::' } },
+                    { path: 'page-invoices2', component: PageInvoicesV2Component, data: { title: ':: Klassy :: Pages :: Invoices - V2 ::' } },
+                    { path: 'page-search-results', component: PageSearchResultsComponent, data: { title: ':: Klassy :: Pages :: Search Results ::' } },
+                    { path: 'page-helper-class', component: PageHelperClassComponent, data: { title: ':: Klassy :: Pages :: Classes ::' } },
+                    { path: 'page-teams-board', component: PageTeamsBoardComponent, data: { title: ':: Klassy :: Pages :: Team ::' } },
+                    { path: 'page-projects-list', component: PageProjectsListComponent, data: { title: ':: Klassy :: Pages :: Projects ::' } },
+                    { path: 'page-maintenance', component: PageProjectsListComponent, data: { title: ':: Klassy :: Pages :: Maintenance ::' } },
+                    { path: 'page-testimonials', component: PageTestimonialsComponent, data: { title: ':: Klassy :: Pages :: Testimonials ::' } },
+                    { path: 'page-faq', component: PageFaqComponent, data: { title: ':: Klassy :: Pages :: Faq ::' } },
                     
                 ]
             },
@@ -137,41 +144,41 @@ const routes: Routes = [
                 path: 'charts',
                 children: [
                     { path: '', redirectTo: 'chart-echarts', pathMatch: 'full' },
-                    { path: 'chart-echarts', component: ChartEchartComponent, data: { title: ':: Lucid Angular :: Charts :: E-Charts ::' } },
+                    { path: 'chart-echarts', component: ChartEchartComponent, data: { title: ':: Klassy :: Charts :: E-Charts ::' } },
                 ]
             },
             {
                 path: 'forms',
                 children: [
                     { path: '', redirectTo: 'forms-validation', pathMatch: 'full' },
-                    { path: 'forms-validation', component: FormsValidationComponent, data: { title: ':: Lucid Angular :: Form Validations :: Forms ::' } },
-                    { path: 'forms-basic', component: FormsBasicComponent, data: { title: ':: Lucid Angular :: Form Basic :: Forms ::' } }
+                    { path: 'forms-validation', component: FormsValidationComponent, data: { title: ':: Klassy :: Form Validations :: Forms ::' } },
+                    { path: 'forms-basic', component: FormsBasicComponent, data: { title: ':: Klassy :: Form Basic :: Forms ::' } }
                 ]
             },
             {
                 path: 'blogs',
                 children: [
                     { path: '', redirectTo: 'blog-post', pathMatch: 'full' },
-                    { path: 'blog-post', component: BlogPostComponent, data: { title: ':: Lucid Angular :: Blog Post :: Blog ::' } },
-                    { path: 'blog-list', component: BlogListComponent, data: { title: ':: Lucid Angular :: Blog List :: Blog ::' } },
-                    { path: 'blog-details', component: BlogDetailsComponent, data: { title: ':: Lucid Angular :: Blog Details :: Blog ::' } }
+                    { path: 'blog-post', component: BlogPostComponent, data: { title: ':: Klassy :: Blog Post :: Blog ::' } },
+                    { path: 'blog-list', component: BlogListComponent, data: { title: ':: Klassy :: Blog List :: Blog ::' } },
+                    { path: 'blog-details', component: BlogDetailsComponent, data: { title: ':: Klassy :: Blog Details :: Blog ::' } }
                 ]
             },
             {
                 path: 'widgets',
                 children: [
                     { path: '', redirectTo: 'widgets-data', pathMatch: 'full' },
-                    { path: 'widgets-data', component: WidgetsDataComponent, data: { title: ':: Lucid Angular :: Widgets Data :: Widgets ::' } },
-                    { path: 'widgets-weather', component: WidgetsWeatherComponent, data: { title: ':: Lucid Angular :: Widgets Weather :: Widgets ::' } },
-                    { path: 'widgets-blog', component: WidgetsBlogComponent, data: { title: ':: Lucid Angular :: Widgets Blog :: Widgets ::' } },
-                    { path: 'widgets-ecommerce', component: WidgetsEcommerceComponent, data: { title: ':: Lucid Angular :: Widgets eCommerce :: Widgets ::' } }
+                    { path: 'widgets-data', component: WidgetsDataComponent, data: { title: ':: Klassy :: Widgets Data :: Widgets ::' } },
+                    { path: 'widgets-weather', component: WidgetsWeatherComponent, data: { title: ':: Klassy :: Widgets Weather :: Widgets ::' } },
+                    { path: 'widgets-blog', component: WidgetsBlogComponent, data: { title: ':: Klassy :: Widgets Blog :: Widgets ::' } },
+                    { path: 'widgets-ecommerce', component: WidgetsEcommerceComponent, data: { title: ':: Klassy :: Widgets eCommerce :: Widgets ::' } }
                 ]
             },
             {
                 path: 'maps',
                 children: [
                     { path: '', redirectTo: 'leaflet', pathMatch: 'full' },
-                    { path: 'leaflet', component: PageLeafletComponent, data: { title: ':: Lucid Angular :: Maps :: Leaflet ::' } },
+                    { path: 'leaflet', component: PageLeafletComponent, data: { title: ':: Klassy :: Maps :: Leaflet ::' } },
                 ]
             }
         ]
