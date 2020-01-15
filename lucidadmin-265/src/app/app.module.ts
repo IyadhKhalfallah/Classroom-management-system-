@@ -19,6 +19,7 @@ import {GradesService} from "./services/grades.service";
 import { WebCamComponentComponent } from './web-cam-component/web-cam-component.component';
 import {WebcamModule} from 'ngx-webcam';
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -37,7 +38,9 @@ import {WebcamModule} from 'ngx-webcam';
         NgxGalleryModule,
         HttpClientModule,
         FormsModule,
-        WebcamModule
+        WebcamModule,
+        ReactiveFormsModule
+
     ],
     providers: [DocumentsService, GradesService],
     bootstrap: [AppComponent]
