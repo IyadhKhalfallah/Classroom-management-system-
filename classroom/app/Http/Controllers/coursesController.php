@@ -95,9 +95,7 @@ class coursesController extends Controller
      */
     public function destroy(Request $request,Course $course)
     {
-        if($request->user()->id != $course->user_id){
-            return response()->json(['error' => 'You can only delete your own books.'], 403);
-        }
+
         $course ->delete();
         return response()->json(null,204);
     }

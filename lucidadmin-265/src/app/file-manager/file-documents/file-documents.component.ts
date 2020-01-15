@@ -26,7 +26,7 @@ export class FileDocumentsComponent implements OnInit {
      this.documentsService.getCourses('' , 'All', 'All').subscribe(
          (response) => {(console.log(response)); 
         for(var i=0;i<response['data'].length;i++){
-        var d=new FileDocument(response['data'][i]['id'],response['data'][i]['name'],response['data'][i]['type'],response['data'][i]['subject'],response['data'][i]['link'],response['data'][i]['user_id'])
+        var d=new FileDocument(response['data'][i]['id_course'],response['data'][i]['name'],response['data'][i]['type'],response['data'][i]['subject'],response['data'][i]['link'],response['data'][i]['user_id'])
         this.fileDocuments.push(d);
       }
         }
@@ -34,6 +34,16 @@ export class FileDocumentsComponent implements OnInit {
 
   }
 
+  delete(fileDocument: FileDocument){
+    console.log('test')
+    this.documentsService.deleteCourse(fileDocument).subscribe(
+      (response) =>{
+        console.log(response)
+        this.fileDocuments = this.fileDocuments.filter(item => item.id !== fileDocument.id);
+      }
+    )
+
+  }
   toggleFullWidth() {
     this.sidebarService.toggle();
     this.sidebarVisible = this.sidebarService.getStatus();

@@ -28,9 +28,8 @@ export class DocumentsService {
     return this.http.post(this.API_ROUTE + '/api/courses', formData );
   }
 
-  deleteCourse(fileDocument: FileDocument): Observable<FileDocument[]> {
-    this.http.delete(this.API_ROUTE + '/api/courses/' + fileDocument.id);
-    return this.getCourses('', 'All' , 'All');
+  deleteCourse(fileDocument: FileDocument){
+    return this.http.delete(this.API_ROUTE + '/api/courses/' + String(fileDocument.id));
   }
 
 

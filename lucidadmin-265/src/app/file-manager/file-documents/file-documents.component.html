@@ -41,10 +41,10 @@
         <div *ngFor="let fileDocument of fileDocuments" class="col-lg-3 col-md-4 col-sm-12">
             <div class="card">
                 <div class="file">
-                    <a href="javascript:void(0);">
-                        <div class="hover">
-                            <button type="button" class="btn btn-icon btn-danger">
-                               <i class="fa fa-trash" (click)="documentsService.deleteCourse(fileDocument)"></i>
+                <a href="javascript:void(0)">   
+                        <div class="hover">x
+                            <button type="button" class="btn btn-icon btn-danger" (click)="delete(fileDocument)">
+                               <i class="fa fa-trash" ></i>
                             </button>
                         </div>
                         <div class="icon" >
